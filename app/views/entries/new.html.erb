@@ -1,0 +1,22 @@
+<h1>New Journal Entry for <%= @place&.name || "Unknown Place" %></h1>
+
+<%= form_with url: "/places/#{@place.id}/entries", local: true do |form| %>
+  <p>
+  <%= form.hidden_field :place_id, value: @place.id %>
+
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.label :date %>
+    <%= form.date_field :occurred_on %>
+  </p>
+
+  <%= form.submit "Save Entry" %>
+<% end %>
